@@ -37,7 +37,7 @@ library
                        System.Directory.Watchman.WatchmanServer
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.8 && <4.9,
+  build-depends:       base >=4.8 && <5.0,
                        async,
                        binary >= 0.8.4.0,
                        bytestring,
@@ -52,7 +52,7 @@ library
 test-suite test
   type:                exitcode-stdio-1.0
   main-is:             test.hs
-  build-depends:       base >=4.8 && <4.9,
+  build-depends:       base >=4.8 && <5.0,
                        hs-watchman,
                        bytestring,
                        containers,
