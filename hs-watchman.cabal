@@ -1,5 +1,5 @@
 name:                hs-watchman
-version:             0.0.0.1
+version:             0.0.0.2
 synopsis:            Client library for Facebook's Watchman tool
 description:         Client library for Facebook's Watchman tool
 license:             MIT
