@@ -4,6 +4,9 @@ module System.Directory.Watchman
     ( version
     , shutdownServer
     , WatchmanVersion(..)
+    , WatchResponse(..)
+    , WatchmanSocket
+    , WatchmanSubscription
     , watch
     , query
     , withConnect
@@ -44,9 +47,6 @@ newtype WatchmanWarning = WatchmanWarning String
     deriving (Show, Eq, Ord)
 
 data WatchmanCommand a b = WatchmanCommand (a -> BSERValue) (BSERValue -> Parser b)
-
-newtype Subscription = Subscription ByteString
-    deriving (Show, Eq, Ord)
 
 newtype WatchmanVersion = WatchmanVersion String
     deriving (Show, Eq, Ord)
