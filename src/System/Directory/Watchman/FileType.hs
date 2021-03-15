@@ -17,6 +17,7 @@ data FileType
     | TSymbolicLink
     | TSocket
     | TSolarisDoor
+    | TUnknown
     deriving (Show, Eq, Ord)
 
 fileTypeChar :: FileType -> ByteString
@@ -29,13 +30,13 @@ fileTypeChar TSymbolicLink = "l"
 fileTypeChar TSocket = "s"
 fileTypeChar TSolarisDoor = "D"
 
-fileTypeFromChar :: ByteString -> Maybe FileType
-fileTypeFromChar "b" = Just TBlockSpecialFile
-fileTypeFromChar "c" = Just TCharacterSpecialFile
-fileTypeFromChar "d" = Just TDirectory
-fileTypeFromChar "f" = Just TRegularFile
-fileTypeFromChar "p" = Just TNamedPipe
-fileTypeFromChar "l" = Just TSymbolicLink
-fileTypeFromChar "s" = Just TSocket
-fileTypeFromChar "D" = Just TSolarisDoor
-fileTypeFromChar _ = Nothing
+fileTypeFromChar :: ByteString -> FileType
+fileTypeFromChar "b" = TBlockSpecialFile
+fileTypeFromChar "c" = TCharacterSpecialFile
+fileTypeFromChar "d" = TDirectory
+fileTypeFromChar "f" = TRegularFile
+fileTypeFromChar "p" = TNamedPipe
+fileTypeFromChar "l" = TSymbolicLink
+fileTypeFromChar "s" = TSocket
+fileTypeFromChar "D" = TSolarisDoor
+fileTypeFromChar _ = TUnknown
