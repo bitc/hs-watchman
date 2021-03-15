@@ -35,6 +35,8 @@ instance Monad Parser where
     {-# INLINE (>>=) #-}
     return a = Parser $ \_kf ks -> ks a
     {-# INLINE return #-}
+
+instance MonadFail Parser where
     fail msg = Parser $ \kf _ks -> kf msg
     {-# INLINE fail #-}
 
@@ -61,6 +63,9 @@ instance MonadPlus Parser where
     mplus a b = Parser $ \kf ks -> let kf' _ = runParser b kf ks
                                    in runParser a kf' ks
     {-# INLINE mplus #-}
+
+instance Semigroup  (Parser a) where
+    (<>) = mplus
 
 instance Monoid (Parser a) where
     mempty  = fail "mempty"
